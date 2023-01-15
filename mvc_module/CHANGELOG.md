@@ -1,3 +1,3 @@
 # 0.1.0+1
 
-- TODO: Describe initial release.
+- To Add Modules Inside mvc_project Brick.
