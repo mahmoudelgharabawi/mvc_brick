@@ -1,0 +1,11 @@
+to use brick inside project (make project inside mvc_brick)
+from inside project run (mason make mvc_brick)
+
+to test generated output of the brick inside brick project (mason make mvc_brick -o \generated\foldenName)
+
+
+don not forget to put the new brick inside mason.yaml file
+
+for Local add brick 🗂
+
+mason add example --path ./example

@@ -1,0 +1,6 @@
+bricks:
+  mvc_project:
+    path: ./mvc_project
+  mvc_module:
+    path: ./mvc_module
+  mason_flutter_project: ^0.2.2
