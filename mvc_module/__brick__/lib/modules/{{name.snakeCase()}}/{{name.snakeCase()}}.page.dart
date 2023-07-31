@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:tecfy_basic_package/tecfy_basic_package.dart';
 
 import '{{name.snakeCase()}}.controller.dart';
 
-class {{name.pascalCase()}}Page extends TecfyStatefulWidget<{{name.pascalCase()}}Controller> {
+class {{name.pascalCase()}}Page extends {{cname.pascalCase()}}StatefulWidget<{{name.pascalCase()}}Controller> {
   const {{name.pascalCase()}}Page({{{name.pascalCase()}}Controller? controllerEx, Key? key})
       : super(controllerEx, key: key);
 
@@ -13,7 +12,7 @@ class {{name.pascalCase()}}Page extends TecfyStatefulWidget<{{name.pascalCase()}
 
 
 
-class _{{name.pascalCase()}}PageState extends TecfyState<{{name.pascalCase()}}Page, {{name.pascalCase()}}Controller> {
+class _{{name.pascalCase()}}PageState extends {{cname.pascalCase()}}State<{{name.pascalCase()}}Page, {{name.pascalCase()}}Controller> {
   @override
   createController() {
     return  {{name.pascalCase()}}Controller();

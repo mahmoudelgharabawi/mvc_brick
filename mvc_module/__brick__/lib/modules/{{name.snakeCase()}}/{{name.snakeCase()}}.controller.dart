@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tecfy_basic_package/tecfy_basic_package.dart';
 
-class {{name.pascalCase()}}Controller extends TecfyController {
+class {{name.pascalCase()}}Controller extends {{cname.pascalCase()}}Controller {
   @override
   void init(Widget page) {}
 
