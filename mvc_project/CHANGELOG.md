@@ -1,3 +1,3 @@
-# 0.1.0+1
+# 0.1.4
 
-- Intial Release To Create MVC Pattern.
+- Add Ability to add or remove beamer.

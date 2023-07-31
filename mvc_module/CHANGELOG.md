@@ -1,3 +1,3 @@
-# 0.1.0+2
+# 0.1.2
 
-- To Add Modules Inside mvc_project Brick.
+- To Add Modules Inside Your Project based on MVC Pattern.

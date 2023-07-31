@@ -1,6 +1,8 @@
 import 'services/app_config.service.dart';
+{{#use_beamer}}
 import 'services/beamer.service.dart';
 import 'package:beamer/beamer.dart';
+{{/use_beamer}}
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +14,9 @@ import 'services/localization/app_localizations_delegate.localization.services.d
 void main() async {
   await ConfigService.init();
   WidgetsFlutterBinding.ensureInitialized();
+  {{#use_beamer}}
   Beamer.setPathUrlStrategy();
+  {{/use_beamer}}
   runApp(const RestartWidget(MyApp()));
 }
 
@@ -31,10 +35,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    {{#use_beamer}}
+  
     return MaterialApp.router(
       scrollBehavior: AppScrollBehavior(),
       debugShowCheckedModeBanner: false,
-      title: 'Kafarat Plus',
+      title: 'App Name',
       // theme: ThemeData(
       //   fontFamily: "Tajawal",
       //   primarySwatch: createMaterialColor(ConstantsService.mainColor),
@@ -80,6 +86,52 @@ class MyApp extends StatelessWidget {
         alwaysBeamBack: true,
       ),
     );
+   {{/use_beamer}}
+    {{^use_beamer}}
+    return MaterialApp(
+ scrollBehavior: AppScrollBehavior(),
+      debugShowCheckedModeBanner: false,
+      title: 'App Name',
+      // theme: ThemeData(
+      //   colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+      //   useMaterial3: true,
+      // ),
+
+        supportedLocales: const [
+        Locale('ar', 'SA'),
+        Locale('en', 'US'),
+      ],
+      localizationsDelegates: const [
+        GlobalCupertinoLocalizations.delegate,
+        DefaultCupertinoLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        AppLocalizationsDelegate()
+      ],
+      localeResolutionCallback: (locale, supportedLocales) {
+        AppConfigService.supportedAppLocale ??= [];
+        AppConfigService.supportedAppLocale = supportedLocales.toList();
+        var lang = AppConfigService.language;
+        if (AppConfigService.language == '') {
+          for (Locale supportedLocale in supportedLocales) {
+            if (supportedLocale.languageCode == locale?.languageCode ||
+                supportedLocale.countryCode == locale?.countryCode) {
+              AppConfigService.language = supportedLocale.languageCode;
+              lang = supportedLocale.languageCode;
+              return supportedLocale;
+            }
+          }
+        } else {
+          var local = supportedLocales
+              .where((element) => element.languageCode == lang)
+              .first;
+          return local;
+        }
+      },
+      home:
+    );
+     {{/use_beamer}}
+  
   }
 }
 
